@@ -1,0 +1,23 @@
+{
+  "name": "song-of-the-day-",
+  "version": "1.0.0",
+  "description": "A RESTful API that allows users to view, add, and track a daily ‘Song of the Day’ using Node.js and Express.",
+  "homepage": "https://github.com/Obi815/song-of-the-day-#readme",
+  "bugs": {
+    "url": "https://github.com/Obi815/song-of-the-day-/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Obi815/song-of-the-day-.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "sever.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
