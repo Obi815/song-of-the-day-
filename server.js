@@ -21,9 +21,14 @@ const song = {
     }
 }
 
-app.listen(process.env.PORT || PORT, () => {
-    console.log(`The serving is running on on port ${PORT}! You better go catch it!`)
-})
 app.get('/', (request, response) => {
-    response.sendFile(__dirname + '/index.html');
+    response.sendFile(__dirname + '/index.html'); // Getting the html file and responding with it to the browser
+})
+
+app.get('/api', (request, response) =>{
+    response.json(song)
+})
+
+app.listen(process.env.PORT || PORT, () => { // Telling express to listen to hosting site or local port 
+    console.log(`The serving is running on on port ${PORT}! You better go catch it!`)
 })
