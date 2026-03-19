@@ -4,7 +4,7 @@ const PORT = 8000
 
 //Create Song of the Day Object 
 const songs = {
-    "Let's Drive to Vegas": {
+    "lets drive to vegas": {
         'album': 'Out The Trunk',
         'artist': 'Larry June',
         'released': 2019
@@ -18,7 +18,12 @@ const songs = {
         'album': 'Gemini Rights',
         'artist': 'Steve Lacey',
         'date': 2022
-    }
+    },
+    'unknown': {
+    'album': 'No album found',
+    'artist': 'Unknown',
+    'released': 'Unknown'
+}
 }
 
 app.get('/', (request, response) => {
@@ -27,7 +32,7 @@ app.get('/', (request, response) => {
 
 app.get('/api/:name', (request, response) => {
     const songName = request.params.name.toLowerCase()
-    if(rappers[songName]){
+    if(songs[songName]){
         response.json(songs[songName])
     }else{
         response.json(songs['unknown'])
