@@ -42,3 +42,12 @@ app.get('/api/:name', (request, response) => {
 app.listen(process.env.PORT || PORT, () => { // Telling express to listen to hosting site or local port 
     console.log(`The serving is running on on port ${PORT}! You better go catch it!`)
 })
+
+// When a user saves a song, I want to store username, title, artist, album, trackid, image, spotifyURL, and date
+// Routes:
+        // Spotify Search
+            // 1. Search Spotify songs
+            // 2. save chosen song information
+            // 3. get date of todays entries 
+        
+        // Save Song
