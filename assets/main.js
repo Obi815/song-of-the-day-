@@ -1,4 +1,4 @@
-const submitBtn = document.getElementById('submit')
+const searchBtn = document.getElementById('search')
 const mainSOTD = document.getElementById('mainSOTD')
 const songOfDay = document.getElementById('songOfDay')
 const userSOTD = document.getElementById('userSOTD')
