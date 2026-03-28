@@ -1,9 +1,17 @@
-document.querySelector('#submit').addEventListener('click', songSearch)
+const submitBtn = document.getElementById('submit')
+
+submitBtn.addEventListener('click', songSearch)
+
+window.addEventListener('keydown', function(e){ //Enter works as a Click event 
+    if(e.key === "Enter"){
+        songSearch()
+    }
+})
 
 async function songSearch() {
     const query = document.getElementById('artistName').value;
 
-    const res = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(query)}&entity=song&limit=10`);
+    const res = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(query)}&entity=song`);
     const data = await res.json()
 
     const results = document.getElementById('results')
