@@ -6,12 +6,21 @@
     <title>Song of Day</title>
 </head>
 <body>
-    <h1>What is the Song of the Day?</h1>
-    <input type="text" placeholder="Artist Name" id="artistName">
-    <!-- <input type="text" placeholder="Song Title" id="songTitle"> -->
-    <button id="submit">Submit</button>
+    <section id="mainSOTD"> <!-- Main Song Of the Day section -->
+        <h1>Song of the Day</h1>
+    </section>
+    
+    <section id="songOfDay"> <!-- Adding users song of the day -->
+        <h1>What is the Song of the Day?</h1>
+        <input type="text" placeholder="Artist Name" id="artistName">
+        <!-- <input type="text" placeholder="Song Title" id="songTitle"> -->
+        <button id="submit">Submit</button>
+        <section id="results"></section>
+    </section>
 
-    <section id="results"></section>
+    <section id="userSOTD"> <!--Users SOTD will be shown here-->
+
+    </section>
 
     <script src="/assets/main.js"></script>
 </body>
