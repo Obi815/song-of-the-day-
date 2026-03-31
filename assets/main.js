@@ -61,6 +61,7 @@ const artistInput = document.getElementById('artistName')
 
 artistInput.addEventListener('keydown', function(e){
     if(e.key === "Enter"){
+        e.preventDefault()
         songSearch()
     }
 })
