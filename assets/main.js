@@ -30,6 +30,7 @@ const genres = [
 ]
 
 async function getDailySong() {
+    console.log('daily song function ran')
     let randomGenre = genres[Math.floor(Math.random() * genres.length)]
     // Getting Random Genre from list created
 
@@ -40,6 +41,7 @@ async function getDailySong() {
     let randomSong = data.results[Math.floor(Math.random() * data.results.length)]
     console.log(randomSong)
 
+    // Creating variables to grab the tags and elements in HTML 
     const mainSong = document.querySelector('.mainSong')
     const dailyArtist = document.querySelector('.dailyArtist')
     const dailyAlbum = document.querySelector('.dailyAlbum')
@@ -73,9 +75,9 @@ async function songSearch() {
     const data = await res.json()
     console.log(data)
 
-
     // clear old results
     results.innerHTML = ''
+    
 
     data.results.forEach(song => {
         results.innerHTML += `
@@ -88,4 +90,4 @@ async function songSearch() {
     })
 
     document.getElementById('artistName').value = ''
-}
+}  
