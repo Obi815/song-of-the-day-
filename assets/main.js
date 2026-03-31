@@ -71,7 +71,7 @@ artistInput.addEventListener('keydown', function(e){
 async function songSearch() {
     const query = document.getElementById('artistName').value; //Artist Input value set to query
 
-    const res = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(query)}&entity=song`);
+    const res = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(query)}&entity=song&limit=10`);
     const data = await res.json()
     console.log(data)
 

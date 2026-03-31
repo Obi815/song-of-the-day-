@@ -1,0 +1,16 @@
+*{
+    margin: 0;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 4rem auto;
+    /* padding-top: ;  */
+    font-family: 'Quantico';
+    font-size: 16px;
+    
+}
