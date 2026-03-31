@@ -1,10 +1,45 @@
-const searchBtn = document.getElementById('search')
 const mainSOTD = document.getElementById('mainSOTD')
-const songOfDay = document.getElementById('songOfDay')
-const userSOTD = document.getElementById('userSOTD')
+const songOfDay = document.getElementById('dailySong')
+const searchSection = document.getElementById('searchSection')
+const searchBtn = document.getElementById('search')
+const results = document.getElementById('results')
+// const userSOTD = document.getElementById('userSOTD')
+
+const genres = [
+  'hip hop',
+  'rap',
+  'r&b',
+  'pop',
+  'afrobeats',
+  'dance',
+  'electronic',
+  'house',
+  'techno',
+  'rock',
+  'alternative',
+  'indie',
+  'country',
+  'latin',
+  'reggaeton',
+  'jazz',
+  'blues',
+  'soul',
+  'funk',
+  'gospel'
+]
+
+async function getDailySong() {
+    let randomGenre = genres[Math.floor(Math.random() * genres.length)]
+    const res = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(randomGenre)}&entity=song`)
+    const data = await res.json()
+    console.log(data)
+    
+}
+
+getDailySong()
 
 
-submitBtn.addEventListener('click', songSearch) // Click Event to start search
+searchBtn.addEventListener('click', songSearch) // Click Event to start search
 
 window.addEventListener('keydown', function(e){ //Enter works as a Click event 
     if(e.key === "Enter"){
@@ -19,7 +54,6 @@ async function songSearch() {
     const data = await res.json()
     console.log(data)
 
-    const results = document.getElementById('results')
 
     // clear old results
     results.innerHTML = ''
