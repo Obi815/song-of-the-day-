@@ -5,6 +5,7 @@ const searchBtn = document.getElementById('search')
 const results = document.getElementById('results')
 // const userSOTD = document.getElementById('userSOTD')
 
+// list of genres
 const genres = [
   'hip hop',
   'rap',
@@ -39,7 +40,16 @@ async function getDailySong() {
     let randomSong = data.results[Math.floor(Math.random() * data.results.length)]
     console.log(randomSong)
 
-    songOfDay
+    const mainSong = document.querySelector('.mainSong')
+    const dailyArtist = document.querySelector('.dailyArtist')
+    const dailyAlbum = document.querySelector('.dailyAlbum')
+
+    // Add to the HTMl
+    mainSong.textContent = randomSong.trackName
+    dailyArtist.textContent = randomSong.artistName
+    dailyAlbum.src = randomSong.artworkUrl100
+
+
 }
 
 getDailySong()
@@ -47,7 +57,9 @@ getDailySong()
 
 searchBtn.addEventListener('click', songSearch) // Click Event to start search
 
-window.addEventListener('keydown', function(e){ //Enter works as a Click event 
+const artistInput = document.getElementById('artistName')
+
+artistInput.addEventListener('keydown', function(e){
     if(e.key === "Enter"){
         songSearch()
     }
