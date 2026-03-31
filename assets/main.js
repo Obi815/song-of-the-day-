@@ -30,10 +30,16 @@ const genres = [
 
 async function getDailySong() {
     let randomGenre = genres[Math.floor(Math.random() * genres.length)]
+    // Getting Random Genre from list created
+
     const res = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(randomGenre)}&entity=song`)
     const data = await res.json()
-    console.log(data)
     
+    // Getting random song
+    let randomSong = data.results[Math.floor(Math.random() * data.results.length)]
+    console.log(randomSong)
+
+    songOfDay
 }
 
 getDailySong()
