@@ -11,6 +11,38 @@ body{
     margin: 4rem auto;
     /* padding-top: ;  */
     font-family: 'Quantico';
-    font-size: 16px;
-    
+    font-size: 16px; 
+}
+
+#mainSOTD {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#mainSOTD h1 {
+    font-size: 6rem;
+}
+
+#dailySong {
+    display: flex;
+    flex-direction: column;
+    padding: 3rem;
+}
+
+.mainSong{
+    font-size: 3rem;
+    align-self: center;
+}
+.dailyArtist {
+    font-size: 1.5rem;
+    align-self: center;
+    padding: .5em;
+}
+.dailyAlbum {
+    width: 20rem;
+    height: 20rem;
+    object-fit: cover; /* 🔥 key fix */
+    border-radius: 10px; /* optional, looks nicer */
 }

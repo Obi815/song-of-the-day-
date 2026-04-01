@@ -34,7 +34,7 @@ async function getDailySong() {
     let randomGenre = genres[Math.floor(Math.random() * genres.length)]
     // Getting Random Genre from list created
 
-    const res = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(randomGenre)}&entity=song`)
+    const res = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(randomGenre)}&entity=song&limit=100`)
     const data = await res.json()
     
     // Getting random song
@@ -49,7 +49,7 @@ async function getDailySong() {
     // Add to the HTMl
     mainSong.textContent = randomSong.trackName
     dailyArtist.textContent = randomSong.artistName
-    dailyAlbum.src = randomSong.artworkUrl100
+    dailyAlbum.src = randomSong.artworkUrl100.replace('100x100', '600x600')
 
 
 }
