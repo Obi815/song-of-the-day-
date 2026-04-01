@@ -26,23 +26,70 @@ body{
 }
 
 #dailySong {
+    position: relative;
     display: flex;
     flex-direction: column;
     padding: 3rem;
+    overflow: hidden;
+}
+
+#dailySong::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    filter: blur(25px);
+    transform: scale(1.2); /* prevents edges from showing */
+    z-index: -1;
+    opacity: 0.6;
 }
 
 .mainSong{
-    font-size: 3rem;
+    font-size: 3.6rem;
     align-self: center;
 }
 .dailyArtist {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     align-self: center;
     padding: .5em;
 }
 .dailyAlbum {
+    align-self: center;
     width: 20rem;
     height: 20rem;
-    object-fit: cover; /* 🔥 key fix */
-    border-radius: 10px; /* optional, looks nicer */
+    object-fit: cover;
+    border-radius: 10px; 
 }
+
+/* Search Section */
+#searchSection {
+    display: flex;
+    flex-direction: column;
+    padding-top: 3rem;
+}
+
+#searchSection h2 {
+    align-self: center;
+    font-size: 3.5rem;
+    padding-bottom: 2rem;
+}
+
+.searchBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+#artistName,
+#search {
+    width: 25rem;        /* 🔥 same width */
+    height: 3.5rem;      /* 🔥 same height */
+    font-size: 1.5rem;
+    font-family: 'Quantico';
+    border-radius: 10px;
+    text-align: center;
+}
+
+

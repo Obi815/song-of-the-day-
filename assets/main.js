@@ -50,8 +50,6 @@ async function getDailySong() {
     mainSong.textContent = randomSong.trackName
     dailyArtist.textContent = randomSong.artistName
     dailyAlbum.src = randomSong.artworkUrl100.replace('100x100', '600x600')
-
-
 }
 
 getDailySong()
