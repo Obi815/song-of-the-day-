@@ -3,6 +3,7 @@ const songOfDay = document.getElementById('dailySong')
 const searchSection = document.getElementById('searchSection')
 const searchBtn = document.getElementById('search')
 const results = document.getElementById('results')
+const artistInput = document.getElementById('artistName')
 
 // list of genres
 const genres = [
@@ -41,6 +42,7 @@ dateEl.textContent = today.toLocaleDateString(undefined, {
     year: 'numeric'
 })
 
+// makes sure only one audio plays at a time
 function setupAudioPlayers() {
     const audioPlayers = document.querySelectorAll('audio')
 
@@ -80,10 +82,10 @@ async function getDailySong() {
     mainSong.textContent = randomSong.trackName
     dailyArtist.textContent = randomSong.artistName
     dailyAlbum.src = randomSong.artworkUrl100.replace('100x100', '600x600')
-    dailySongPreview.src = randomSong.previewUrl
+    dailySongPreview.src = randomSong.previewUrl || ''
 
+    // setup audio control for main song
     setupAudioPlayers()
-
 }
 
 getDailySong()
@@ -91,8 +93,6 @@ getDailySong()
 // SEARCH FOR SONG SECTION 
 
 searchBtn.addEventListener('click', songSearch) // Click Event to start search
-
-const artistInput = document.getElementById('artistName')
 
 artistInput.addEventListener('keydown', function(e){
     if(e.key === "Enter"){
@@ -113,24 +113,22 @@ async function songSearch() {
     results.innerHTML = ''
     
 
-  data.results.forEach(song => {
-    results.innerHTML += `
-        <div class="song-card">
-            <img class="song-img" src="${song.artworkUrl100.replace('100x100','300x300')}" alt="album art">
-            
-            <div class="song-info">
-                <h2 class="song-title">${song.trackName}</h2>
-                <p class="song-artist">${song.artistName}</p>
-                ${song.previewUrl ? `<audio class="song-audio" controls src="${song.previewUrl}"></audio>` : ''}
+    data.results.forEach(song => {
+        results.innerHTML += `
+            <div class="song-card">
+                <img class="song-img" src="${song.artworkUrl100.replace('100x100','300x300')}" alt="album art">
+                
+                <div class="song-info">
+                    <h2 class="song-title">${song.trackName}</h2>
+                    <p class="song-artist">${song.artistName}</p>
+                    ${song.previewUrl ? `<audio class="song-audio" controls src="${song.previewUrl}"></audio>` : ''}
+                </div>
             </div>
-        </div>
-    `
-})
+        `
+    })
 
-    document.getElementById('artistName').value = ''
-}  
+    // setup audio control for all search + main songs
+    setupAudioPlayers()
 
-setupAudioPlayers() // Stop start songs
-
-const audioPlayers = document.querySelectorAll('audio')
-
+    artistInput.value = ''
+}
