@@ -26,6 +26,8 @@ const songs = {
 }
 }
 
+app.use(express.static(__dirname))
+
 app.get('/', (request, response) => {
     response.sendFile(__dirname + '/index.html'); // Getting the html file and responding with it to the browser
 })
