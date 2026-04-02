@@ -68,7 +68,7 @@ body{
     width: 20rem;
     height: 20rem;
     object-fit: cover;
-    border-radius: 180px; 
+    border-radius: 50%; 
 }
 
 /* Search Section */
@@ -101,6 +101,20 @@ body{
     text-align: center;
 }
 
-#results img {
-    border-radius: 180px;
+#results {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    max-height: 300px;   /* 🔥 controls scroll height */
+    overflow-y: auto;    /* 🔥 enables scrolling */
+    gap: 0.5rem;
 }
+
+.song-img {
+    width: 50px;          /* 🔥 smaller */
+    height: 50px;
+    object-fit: cover;
+    border-radius: 8px;   /* slight round, not full circle */
+    flex-shrink: 0;
+}
+
