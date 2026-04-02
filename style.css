@@ -24,14 +24,20 @@ body{
 }
 
 #mainSOTD h1 {
-    font-size: 6rem;
+    font-size: 6.5rem;
+}
+
+#currentDate {
+    font-size: 1.3rem;
+   padding-bottom: 2rem;
+   color: lightgray;
 }
 
 #dailySong {
     position: relative;
     display: flex;
     flex-direction: column;
-    padding: 3rem;
+    padding: 3.5rem;
     overflow: hidden;
 }
 
@@ -50,7 +56,7 @@ body{
 .mainSong {
     font-size: 3.6rem;
     text-align: center;      /* centers text */
-    max-width: 600px;        /* 🔥 limits width */
+    max-width: 600px;        /*  limits width */
     margin: 0 auto;          /* keeps it centered */
     word-wrap: break-word;   /* ensures wrapping */
 }
@@ -64,6 +70,7 @@ body{
     font-size: 1.8rem;
     align-self: center;
     padding: .5em;
+    color: lightgray;
 }
 .dailyAlbum {
     align-self: center;
@@ -72,6 +79,17 @@ body{
     object-fit: cover;
     border-radius: 50%; 
 }
+
+/* 1. Define the rotation sequence */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.dailyAlbum {
+  animation: spin 20s linear infinite;
+}
+
 
 /* Search Section */
 #searchSection {
@@ -107,8 +125,8 @@ body{
 
 #artistName,
 #search {
-    width: 25rem;        /* 🔥 same width */
-    height: 3.5rem;      /* 🔥 same height */
+    width: 25rem;        /*  same width */
+    height: 3.5rem;      /*  same height */
     font-size: 1.5rem;
     font-family: 'Quantico';
     border-radius: 10px;
@@ -125,7 +143,7 @@ body{
     overflow-y: auto;
     gap: 0.5rem;
 
-    /* 🔥 hide scrollbar */
+    /*  hide scrollbar */
     scrollbar-width: none;       /* Firefox */
     -ms-overflow-style: none;    /* IE/Edge */
 

@@ -3,7 +3,6 @@ const songOfDay = document.getElementById('dailySong')
 const searchSection = document.getElementById('searchSection')
 const searchBtn = document.getElementById('search')
 const results = document.getElementById('results')
-// const userSOTD = document.getElementById('userSOTD')
 
 // list of genres
 const genres = [
@@ -30,6 +29,34 @@ const genres = [
   'reggae'
 ]
 
+// getting the current day
+const dateEl = document.getElementById('currentDate')
+
+const today = new Date()
+
+dateEl.textContent = today.toLocaleDateString(undefined, {
+    weekday: 'long',
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric'
+})
+
+function setupAudioPlayers() {
+    const audioPlayers = document.querySelectorAll('audio')
+
+    audioPlayers.forEach(player => {
+        player.onplay = () => {
+            audioPlayers.forEach(otherPlayer => {
+                if (otherPlayer !== player) {
+                    otherPlayer.pause()
+                    otherPlayer.currentTime = 0
+                }
+            })
+        }
+    })
+}
+
+
 // DAILY SONG OF THE DAY 
 async function getDailySong() {
     console.log('daily song function ran')
@@ -54,6 +81,9 @@ async function getDailySong() {
     dailyArtist.textContent = randomSong.artistName
     dailyAlbum.src = randomSong.artworkUrl100.replace('100x100', '600x600')
     dailySongPreview.src = randomSong.previewUrl
+
+    setupAudioPlayers()
+
 }
 
 getDailySong()
@@ -72,7 +102,8 @@ artistInput.addEventListener('keydown', function(e){
 })
 
 async function songSearch() {
-    const query = document.getElementById('artistName').value; //Artist Input value set to query
+    const query = artistInput.value.trim()
+    if (!query) return //Artist Input value set to query
 
     const res = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(query)}&entity=song&limit=20`);
     const data = await res.json()
@@ -98,3 +129,8 @@ async function songSearch() {
 
     document.getElementById('artistName').value = ''
 }  
+
+setupAudioPlayers() // Stop start songs
+
+const audioPlayers = document.querySelectorAll('audio')
+
