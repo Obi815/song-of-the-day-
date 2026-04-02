@@ -26,9 +26,11 @@ const genres = [
   'blues',
   'soul',
   'funk',
-  'gospel'
+  'gospel',
+  'reggae'
 ]
 
+// DAILY SONG OF THE DAY 
 async function getDailySong() {
     console.log('daily song function ran')
     let randomGenre = genres[Math.floor(Math.random() * genres.length)]
@@ -45,15 +47,18 @@ async function getDailySong() {
     const mainSong = document.querySelector('.mainSong')
     const dailyArtist = document.querySelector('.dailyArtist')
     const dailyAlbum = document.querySelector('.dailyAlbum')
+    const dailySongPreview = document.querySelector('.dailySongPreview')
 
     // Add to the HTMl
     mainSong.textContent = randomSong.trackName
     dailyArtist.textContent = randomSong.artistName
     dailyAlbum.src = randomSong.artworkUrl100.replace('100x100', '600x600')
+    dailySongPreview.src = randomSong.previewUrl
 }
 
 getDailySong()
 
+// SEARCH FOR SONG SECTION 
 
 searchBtn.addEventListener('click', songSearch) // Click Event to start search
 
@@ -69,7 +74,7 @@ artistInput.addEventListener('keydown', function(e){
 async function songSearch() {
     const query = document.getElementById('artistName').value; //Artist Input value set to query
 
-    const res = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(query)}&entity=song&limit=10`);
+    const res = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(query)}&entity=song&limit=20`);
     const data = await res.json()
     console.log(data)
 
@@ -83,6 +88,7 @@ async function songSearch() {
                 <h2>${song.trackName}</h2>
                 <p>${song.artistName}</p>
                 <img src="${song.artworkUrl100}">
+                <audio controls src="${song.previewUrl}"> </audio>
             </div>
         `
     })

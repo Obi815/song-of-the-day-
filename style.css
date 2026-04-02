@@ -45,9 +45,18 @@ body{
     opacity: 0.6;
 }
 
-.mainSong{
+.mainSong {
     font-size: 3.6rem;
+    text-align: center;      /* centers text */
+    max-width: 600px;        /* 🔥 limits width */
+    margin: 0 auto;          /* keeps it centered */
+    word-wrap: break-word;   /* ensures wrapping */
+}
+
+.dailySongPreview {
+    margin-top: 2rem;
     align-self: center;
+
 }
 .dailyArtist {
     font-size: 1.8rem;
