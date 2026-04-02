@@ -12,6 +12,8 @@ body{
     /* padding-top: ;  */
     font-family: 'Quantico';
     font-size: 16px; 
+    background-color: rgb(19, 21, 18);
+    color: white;
 }
 
 #mainSOTD {
@@ -75,13 +77,13 @@ body{
 #searchSection {
     display: flex;
     flex-direction: column;
-    padding-top: 3rem;
+    padding: 3rem 0 3rem 0;
 }
 
-#searchSection h2 {
-    align-self: center;
-    font-size: 3.5rem;
-    padding-bottom: 2rem;
+#searchSection > h2 {
+    font-size: 2rem;
+    text-align: center;
+    padding: 2rem;
 }
 
 .searchBox {
@@ -89,6 +91,18 @@ body{
     flex-direction: column;
     align-items: center;
     gap: 1rem;
+}
+
+#artistName {
+    background-color: hsl(270, 2%, 18%);
+    border: 1px solid lightgray;
+    color: white;
+}
+
+#search{
+    border: 1px solid lightgray;
+    background-color: rgb(19, 21, 18);
+    color: white;
 }
 
 #artistName,
@@ -101,30 +115,68 @@ body{
     text-align: center;
 }
 
+
 #results {
     display: flex;
     flex-direction: column;
-    width: 50%;
-    max-height: 300px;   /* 🔥 controls scroll height */
-    overflow-y: auto;    /* 🔥 enables scrolling */
+    align-self: center;
+    width: 70%;
+    max-height: 320px;
+    overflow-y: auto;
     gap: 0.5rem;
+
+    /* 🔥 hide scrollbar */
+    scrollbar-width: none;       /* Firefox */
+    -ms-overflow-style: none;    /* IE/Edge */
+
+    padding-top: 2rem;
+}
+
+#results::-webkit-scrollbar {
+    display: none; /* Chrome, Safari */
+}
+
+.song-card {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    border-radius: 40px;
+    background-color: lightgray;
 }
 
 .song-img {
-    width: 50px;          /* 🔥 smaller */
-    height: 50px;
+    width: 100px;
+    height: 100px;
     object-fit: cover;
-    border-radius: 8px;   /* slight round, not full circle */
+    border-radius: 50%;
     flex-shrink: 0;
 }
 
+.song-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    width: 70%;
+    min-width: 0;
+}
+
 .song-title {
-    font-size: 0.9rem;
+    width: 100%;
+    text-align: left;
+    margin: 0;
+    font-size: 1.1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.song-artist {
+    font-size: 1.4rem;
+    text-align: left;
     margin: 0;
 }
 
-.song-artist {
-    font-size: 0.8rem;
-    color: gray;
-    margin: 0;
+.song-audio {
+    width: 100%;
+    margin-top: 0.2rem;
 }

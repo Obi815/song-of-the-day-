@@ -85,12 +85,12 @@ async function songSearch() {
   data.results.forEach(song => {
     results.innerHTML += `
         <div class="song-card">
-            <img class="song-img" src="${song.artworkUrl100.replace('50x50','100x100')}" alt="album art">
+            <img class="song-img" src="${song.artworkUrl100.replace('100x100','300x300')}" alt="album art">
             
             <div class="song-info">
                 <h2 class="song-title">${song.trackName}</h2>
                 <p class="song-artist">${song.artistName}</p>
-                <audio class="song-audio" controls src="${song.previewUrl}"></audio>
+                ${song.previewUrl ? `<audio class="song-audio" controls src="${song.previewUrl}"></audio>` : ''}
             </div>
         </div>
     `
