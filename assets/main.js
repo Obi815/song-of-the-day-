@@ -94,10 +94,9 @@ async function getDailySong() {
 getDailySong()
 
 // SEARCH FOR SONG SECTION 
-
 searchBtn.addEventListener('click', songSearch) // Click Event to start search
 
-artistInput.addEventListener('keydown', function(e){
+artistInput.addEventListener('keydown', function(e){ //Enter key event 
     if(e.key === "Enter"){
         e.preventDefault()
         songSearch()
@@ -160,6 +159,8 @@ async function songSearch() {
             }
 
             console.log(selectedSong)
+                // clear old results
+                results.innerHTML = ''
         })
     })
 
