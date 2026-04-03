@@ -123,6 +123,10 @@ body{
     color: white;
     cursor: pointer;
 }
+#search:hover {
+    background-color: white;
+    color: black;
+}
 
 #artistName, #userName,
 #search {
@@ -200,15 +204,19 @@ body{
     margin-top: 0.2rem;
 }
 
-.add-btn{
-    margin-top: .5rem;
-    width: 100%;
-    align-self: center;
+
+.add-btn {
+    margin-top: 0.3rem;
+    padding: 0.3rem 0.6rem;
     font-size: 1.5rem;
     font-family: 'Quantico';
-    border: 1px solid white;
     border-radius: 15px;
+    border: none;
     background-color: hsl(270, 2%, 18%);
     color: white;
     cursor: pointer;
+}
+
+.add-btn:hover {
+    background-color: black;
 }
