@@ -4,6 +4,7 @@ const searchSection = document.getElementById('searchSection')
 const searchBtn = document.getElementById('search')
 const results = document.getElementById('results')
 const artistInput = document.getElementById('artistName')
+const userNameInput = document.getElementById('userName')
 
 // list of genres
 const genres = [
@@ -27,7 +28,9 @@ const genres = [
   'soul',
   'funk',
   'gospel',
-  'reggae'
+  'reggae',
+  'neo soul',
+  'disco'
 ]
 
 // getting the current day
