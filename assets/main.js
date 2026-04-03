@@ -118,18 +118,49 @@ async function songSearch() {
 
     data.results.forEach(song => {
         results.innerHTML += `
-            <div class="song-card">
+            <div 
+                class="song-card"
+                data-track="${song.trackName}"
+                data-artist="${song.artistName}"
+                data-image="${song.artworkUrl100.replace('100x100','600x600')}"
+                data-preview="${song.previewUrl || ''}"
+            >
                 <img class="song-img" src="${song.artworkUrl100.replace('100x100','300x300')}" alt="album art">
                 
                 <div class="song-info">
                     <h2 class="song-title">${song.trackName}</h2>
                     <p class="song-artist">${song.artistName}</p>
-                    ${song.previewUrl ? `<audio class="song-audio" controls src="${song.previewUrl}"></audio>
-                    
-                    <button class="add-btn">Add</button>` : ''}
+                    ${song.previewUrl ? `<audio class="song-audio" controls src="${song.previewUrl}"></audio>` : ''}
+                    <button class="add-btn">Add</button>
                 </div>
             </div>
         `
+    })
+
+    // add button event 
+    const addButtons = document.querySelectorAll('.add-btn')
+
+    addButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const card = button.closest('.song-card')
+
+            const username = userNameInput.value.trim()
+
+            if (!username) {
+                alert('Please enter your name first')
+                return
+            }
+
+            const selectedSong = {
+                username: username,
+                trackName: card.dataset.track,
+                artistName: card.dataset.artist,
+                artwork: card.dataset.image,
+                previewUrl: card.dataset.preview
+            }
+
+            console.log(selectedSong)
+        })
     })
 
     // setup audio control for all search + main songs
