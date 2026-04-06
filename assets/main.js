@@ -112,11 +112,11 @@ async function songSearch() {
     const data = await res.json()
     console.log(data)
 
-    // clear old results
+    // clear old results for every search
     results.innerHTML = ''
     
 
-    data.results.forEach(song => {
+    data.results.forEach(song => { //Styling for the search results
         results.innerHTML += `
             <div 
                 class="song-card"
@@ -137,7 +137,7 @@ async function songSearch() {
         `
     })
 
-    // add button event 
+    // Add Song Button 
     const addButtons = document.querySelectorAll('.add-btn')
 
     addButtons.forEach(button => {
@@ -146,12 +146,13 @@ async function songSearch() {
 
             const username = userNameInput.value.trim()
 
-            if (!username) {
+            if (!username) { // Checks name is filled before completing event
                 alert('Please enter your name first')
                 return
             }
 
-            const selectedSong = {
+            // Storing the songs data to be used in MongoDB
+            const selectedSong = { 
                 username: username,
                 trackName: card.dataset.track,
                 artistName: card.dataset.artist,
@@ -160,9 +161,20 @@ async function songSearch() {
                 date: new Date().toLocaleDateString()
             }
 
-            console.log(selectedSong)
-                // clear old results
-                results.innerHTML = ''
+            // clear old results
+            results.innerHTML = ''
+
+            // Sending data to the back end to store
+            fetch('/addSong', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(selectedSong)
+            })
+            .then(res => res.json())
+            .then(data => console.log(data))
+            .catch(err => console.log(err))
         })
     })
 
