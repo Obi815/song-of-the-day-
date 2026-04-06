@@ -156,7 +156,8 @@ async function songSearch() {
                 trackName: card.dataset.track,
                 artistName: card.dataset.artist,
                 artwork: card.dataset.image,
-                previewUrl: card.dataset.preview
+                previewUrl: card.dataset.preview,
+                date: new Date().toLocaleDateString()
             }
 
             console.log(selectedSong)
