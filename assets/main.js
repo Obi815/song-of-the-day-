@@ -65,30 +65,19 @@ function setupAudioPlayers() {
 
 // DAILY SONG OF THE DAY 
 async function getDailySong() {
-    console.log('daily song function ran')
-    let randomGenre = genres[Math.floor(Math.random() * genres.length)]
-    // Getting Random Genre from list created
+    const res = await fetch('/dailySong')
+    const song = await res.json()
 
-    const res = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(randomGenre)}&entity=song&limit=100`)
-    const data = await res.json()
-    
-    // Getting random song
-    let randomSong = data.results[Math.floor(Math.random() * data.results.length)]
-    console.log(randomSong)
-
-    // Creating variables to grab the tags and elements in HTML 
     const mainSong = document.querySelector('.mainSong')
     const dailyArtist = document.querySelector('.dailyArtist')
     const dailyAlbum = document.querySelector('.dailyAlbum')
     const dailySongPreview = document.querySelector('.dailySongPreview')
 
-    // Add to the HTMl
-    mainSong.textContent = randomSong.trackName
-    dailyArtist.textContent = randomSong.artistName
-    dailyAlbum.src = randomSong.artworkUrl100.replace('100x100', '600x600')
-    dailySongPreview.src = randomSong.previewUrl || ''
+    mainSong.textContent = song.trackName
+    dailyArtist.textContent = song.artistName
+    dailyAlbum.src = song.artwork
+    dailySongPreview.src = song.previewUrl || ''
 
-    // setup audio control for main song
     setupAudioPlayers()
 }
 
@@ -102,6 +91,15 @@ async function getSongs() {
     const addedSongs = document.getElementById('addedSongs')
     addedSongs.innerHTML = ''
 
+    // ✅ if no songs exist
+    if (songs.length === 0) {
+        addedSongs.innerHTML = `
+            <p class="empty-message">Be The First!</p>
+        `
+        return
+    }
+
+    // otherwise render songs
     songs.forEach(song => {
         addedSongs.innerHTML += `
             <div class="song-card saved-card">

@@ -158,6 +158,13 @@ body {
     padding: 0.75rem 1rem;
     border-radius: 40px;
     background-color: lightgray;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    transition: transform 0.2s ease;
+
+}
+
+.song-card:hover {
+    transform: scale(1.02);
 }
 
 .song-img {
@@ -212,6 +219,12 @@ body {
 .add-btn:hover {
     background-color: black;
 }
+#addedSongsSection {
+    width: 100%;
+    margin: 2rem auto;
+    padding: 0 2.5rem;
+    box-sizing: border-box;
+}
 
 #addedSongsSection h2 {
     font-size: 2rem;
@@ -223,6 +236,12 @@ body {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 16px;
+}
+
+.empty-message {
+    text-align: center;
+    font-size: 4rem;
+    color: lightgray;
 }
 
 .saved-card {
