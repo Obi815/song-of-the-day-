@@ -156,7 +156,7 @@ async function songSearch() {
                     <h2 class="song-title">${song.trackName}</h2>
                     <p class="song-artist">${song.artistName}</p>
                     ${song.previewUrl ? `<audio class="song-audio" controls src="${song.previewUrl}"></audio>` : ''}
-                    <button class="add-btn">Add</button>
+                    <button class="add-btn">Add Your Song</button>
                 </div>
             </div>
         `
