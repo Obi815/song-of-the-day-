@@ -94,6 +94,33 @@ async function getDailySong() {
 
 getDailySong()
 
+// Retrieving songs from the dataBase 
+async function getSongs() {
+    const res = await fetch('/savedSongs')
+    const songs = await res.json()
+
+    const addedSongs = document.getElementById('addedSongs')
+    addedSongs.innerHTML = ''
+
+    songs.forEach(song => {
+        addedSongs.innerHTML += `
+            <div class="song-card saved-card">
+                <img class="song-img" src="${song.artwork}" alt="album art">
+                <div class="song-info">
+                    <h2 class="song-title">${song.trackName}</h2>
+                    <p class="song-artist">${song.artistName}</p>
+                    <p class="song-user">Added by: ${song.username}</p>
+                    ${song.previewUrl ? `<audio class="song-audio" controls src="${song.previewUrl}"></audio>` : ''}
+                </div>
+            </div>
+        `
+    })
+
+    setupAudioPlayers()
+}
+
+getSongs()
+
 // SEARCH FOR SONG SECTION 
 searchBtn.addEventListener('click', songSearch) // Click Event to start search
 
@@ -173,7 +200,10 @@ async function songSearch() {
                 body: JSON.stringify(selectedSong)
             })
             .then(res => res.json())
-            .then(data => console.log(data))
+            .then(data => {
+                console.log(data)
+                location.reload()
+            })
             .catch(err => console.log(err))
         })
     })
@@ -183,3 +213,5 @@ async function songSearch() {
 
     artistInput.value = ''
 }
+
+

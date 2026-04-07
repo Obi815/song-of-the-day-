@@ -220,3 +220,8 @@ body{
 .add-btn:hover {
     background-color: black;
 }
+
+.song-user {
+    font-family: 'Quantico';
+    color: black;
+}

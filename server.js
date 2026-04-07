@@ -20,7 +20,7 @@ MongoClient.connect(process.env.DB_STRING)
       response.sendFile(__dirname + '/index.html')
     })
 
-
+    // sending data to the database
     app.post('/addSong', (req, res) => {
       console.log(req.body)
 
@@ -30,6 +30,17 @@ MongoClient.connect(process.env.DB_STRING)
           res.json('Song Added') 
         })
         .catch(error => console.error(error))
+    })
+
+    // get songs from the database to put respond to the document
+    app.get('/savedSongs', (req, res) => {
+      const today = new Date().toLocaleDateString() //Gets song by current day. Refreshing Daily
+
+      db.collection('songs').find({ date: today }).toArray()
+      .then(data => {
+        res.json(data)
+      })
+      .catch(err => console.log(err))
     })
 
     app.listen(process.env.PORT || PORT, () => {
