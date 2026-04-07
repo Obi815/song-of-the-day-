@@ -246,6 +246,8 @@ body {
 @media (max-width: 1024px) {
     body {
         margin: 2.5rem auto;
+        padding: 0 2rem;
+        box-sizing: border-box;
     }
 
     #mainSOTD h1 {
@@ -270,12 +272,13 @@ body {
     }
 
     #artistName, #userName, #search {
-        width: 20rem;
+        width: 100%;
+        max-width: 20rem;
         font-size: 1.3rem;
     }
 
     #results {
-        width: 85%;
+        width: 100%;
     }
 
     .song-title {
@@ -297,6 +300,8 @@ body {
 @media (max-width: 480px) {
     body {
         margin: 1.5rem auto;
+        padding: 0 1rem;
+        box-sizing: border-box;
     }
 
     #mainSOTD h1 {
@@ -342,7 +347,9 @@ body {
     }
 
     #results {
-        width: 95%;
+        width: 100%;
+        max-height: 260px;
+        gap: 0.35rem;
     }
 
     .song-card {
@@ -371,12 +378,6 @@ body {
 
     .song-audio {
         height: 30px;
-    }
-
-    #results {
-        width: 95%;
-        max-height: 260px;
-        gap: 0.35rem;
     }
 
     #addedSongs {
