@@ -1,17 +1,16 @@
-*{
+* {
     margin: 0;
 }
 
-body{
+body {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
     margin: 4rem auto;
-    /* padding-top: ;  */
     font-family: 'Quantico';
-    font-size: 16px; 
+    font-size: 16px;
     background-color: rgb(21, 18, 18);
     color: white;
 }
@@ -29,8 +28,8 @@ body{
 
 #currentDate {
     font-size: 1.3rem;
-   padding-bottom: 2rem;
-   color: lightgray;
+    padding-bottom: 2rem;
+    color: lightgray;
 }
 
 #dailySong {
@@ -48,54 +47,50 @@ body{
     background-size: cover;
     background-position: center;
     filter: blur(25px);
-    transform: scale(1.2); /* prevents edges from showing */
+    transform: scale(1.2);
     z-index: -1;
     opacity: 0.6;
 }
 
 .mainSong {
     font-size: 3.6rem;
-    text-align: center;      /* centers text */
-    max-width: 600px;        /*  limits width */
-    margin: 0 auto;          /* keeps it centered */
-    word-wrap: break-word;   /* ensures wrapping */
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+    word-wrap: break-word;
 }
 
 .dailySongPreview {
     margin-top: 2rem;
     align-self: center;
-
 }
+
 .dailyArtist {
     font-size: 1.8rem;
     align-self: center;
     padding: .5em;
     color: lightgray;
 }
+
 .dailyAlbum {
     align-self: center;
     width: 20rem;
     height: 20rem;
     object-fit: cover;
-    border-radius: 50%; 
+    border-radius: 50%;
+    animation: spin 20s linear infinite;
 }
 
-/* 1. Define the rotation sequence */
 @keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
-
-.dailyAlbum {
-  animation: spin 20s linear infinite;
-}
-
 
 /* Search Section */
 #searchSection {
     display: flex;
     flex-direction: column;
-    padding: 3rem 0 3rem 0;
+    padding: 3rem 0;
 }
 
 #searchSection > h2 {
@@ -117,27 +112,26 @@ body{
     color: white;
 }
 
-#search{
+#search {
     border: 1px solid lightgray;
     background-color: rgb(19, 21, 18);
     color: white;
     cursor: pointer;
 }
+
 #search:hover {
     background-color: white;
     color: black;
 }
 
-#artistName, #userName,
-#search {
-    width: 25rem;        /*  same width */
-    height: 3.5rem;      /*  same height */
+#artistName, #userName, #search {
+    width: 25rem;
+    height: 3.5rem;
     font-size: 1.5rem;
     font-family: 'Quantico';
     border-radius: 10px;
     text-align: center;
 }
-
 
 #results {
     display: flex;
@@ -147,16 +141,14 @@ body{
     max-height: 320px;
     overflow-y: auto;
     gap: 0.5rem;
-
-    /*  hide scrollbar */
-    scrollbar-width: none;       /* Firefox */
-    -ms-overflow-style: none;    /* IE/Edge */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
     margin-top: 2rem;
     padding-top: 2rem;
 }
 
 #results::-webkit-scrollbar {
-    display: none; /* Chrome, Safari */
+    display: none;
 }
 
 .song-card {
@@ -193,6 +185,7 @@ body{
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
 .song-artist {
     font-size: 1.2rem;
     text-align: left;
@@ -203,7 +196,6 @@ body{
     width: 100%;
     margin-top: 0.2rem;
 }
-
 
 .add-btn {
     margin-top: 0.3rem;
@@ -221,7 +213,179 @@ body{
     background-color: black;
 }
 
+#addedSongsSection h2 {
+    font-size: 2rem;
+    padding-bottom: 3rem;
+}
+
+#addedSongs {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.saved-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+    box-sizing: border-box;
+}
+
 .song-user {
     font-family: 'Quantico';
     color: black;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ── Tablet / laptop (≤1024px) ── */
+@media (max-width: 1024px) {
+    body {
+        margin: 2.5rem auto;
+    }
+
+    #mainSOTD h1 {
+        font-size: 4.5rem;
+    }
+
+    .mainSong {
+        font-size: 2.6rem;
+    }
+
+    .dailyArtist {
+        font-size: 1.5rem;
+    }
+
+    .dailyAlbum {
+        width: 16rem;
+        height: 16rem;
+    }
+
+    #dailySong {
+        padding: 2.5rem;
+    }
+
+    #artistName, #userName, #search {
+        width: 20rem;
+        font-size: 1.3rem;
+    }
+
+    #results {
+        width: 85%;
+    }
+
+    .song-title {
+        font-size: 1.3rem;
+    }
+
+    #addedSongs {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    #addedSongsSection h2 {
+        font-size: 1.75rem;
+        padding-bottom: 2rem;
+    }
+}
+
+/* ── Small phone (≤480px) ── */
+@media (max-width: 480px) {
+    body {
+        margin: 1.5rem auto;
+    }
+
+    #mainSOTD h1 {
+        font-size: 2.8rem;
+    }
+
+    #currentDate {
+        font-size: 1rem;
+        padding-bottom: 1rem;
+    }
+
+    #dailySong {
+        padding: 1.5rem;
+    }
+
+    .mainSong {
+        font-size: 1.8rem;
+        max-width: 100%;
+    }
+
+    .dailyArtist {
+        font-size: 1.2rem;
+    }
+
+    .dailyAlbum {
+        width: 11rem;
+        height: 11rem;
+    }
+
+    #searchSection {
+        padding: 1.5rem 0;
+    }
+
+    #searchSection > h2 {
+        font-size: 1.5rem;
+        padding: 1rem;
+    }
+
+    #artistName, #userName, #search {
+        width: 90vw;
+        height: 3rem;
+        font-size: 1.1rem;
+    }
+
+    #results {
+        width: 95%;
+    }
+
+    .song-card {
+        padding: 0.5rem 0.75rem;
+        border-radius: 20px;
+        gap: 0.5rem;
+    }
+
+    .song-img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .song-title {
+        font-size: 1rem;
+    }
+
+    .song-artist {
+        font-size: 0.85rem;
+    }
+
+    .add-btn {
+        font-size: 1rem;
+        padding: 0.2rem 0.5rem;
+    }
+
+    .song-audio {
+        height: 30px;
+    }
+
+    #results {
+        width: 95%;
+        max-height: 260px;
+        gap: 0.35rem;
+    }
+
+    #addedSongs {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    #addedSongsSection h2 {
+        font-size: 1.4rem;
+        padding-bottom: 1.25rem;
+    }
 }
