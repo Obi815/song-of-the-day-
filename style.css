@@ -388,5 +388,6 @@ body {
     #addedSongsSection h2 {
         font-size: 1.4rem;
         padding-bottom: 1.25rem;
+        text-align: center;
     }
 }
