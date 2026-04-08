@@ -183,7 +183,6 @@ async function songSearch() {
                 artistName: card.dataset.artist,
                 artwork: card.dataset.image,
                 previewUrl: card.dataset.preview,
-                date: new Date().toLocaleDateString('en-US')
             }
 
             // clear old results

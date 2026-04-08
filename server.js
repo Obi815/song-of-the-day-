@@ -22,21 +22,35 @@ MongoClient.connect(process.env.DB_STRING)
 
     // sending data to the database
     app.post('/addSong', (req, res) => {
-      console.log(req.body)
+      const today = new Date().toLocaleDateString('en-US', {
+        timeZone: 'America/Los_Angeles'
+      })
 
-      db.collection('songs').insertOne(req.body)
+      const songToSave = {
+        ...req.body,
+        date: today
+      }
+
+      console.log(songToSave)
+
+      db.collection('songs').insertOne(songToSave)
         .then(result => {
           console.log('Song Added')
-          res.json('Song Added') 
+          res.json('Song Added')
         })
         .catch(error => console.error(error))
     })
-    
+
     app.get('/savedSongs', (req, res) => {
-      const today = new Date().toLocaleDateString('en-US')
+      const today = new Date().toLocaleDateString('en-US', {
+        timeZone: 'America/Los_Angeles'
+      })
+
+      console.log('SEARCHING FOR DATE:', today)
 
       db.collection('songs').find({ date: today }).toArray()
         .then(data => {
+          console.log('MATCHED SONGS:', data)
           res.json(data)
         })
         .catch(err => console.log(err))
