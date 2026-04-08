@@ -31,17 +31,7 @@ MongoClient.connect(process.env.DB_STRING)
         })
         .catch(error => console.error(error))
     })
-
-    // get songs from the database to put respond to the document
-    // app.get('/savedSongs', (req, res) => {
-    //   const today = new Date().toISOString().split('T')[0]
-
-    //   db.collection('songs').find({ date: today }).toArray()
-    //     .then(data => {
-    //       res.json(data)
-    //     })
-    //     .catch(err => console.log(err))
-    // })
+    
     app.get('/savedSongs', (req, res) => {
       const today = new Date().toLocaleDateString('en-US')
 
