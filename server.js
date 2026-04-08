@@ -33,15 +33,25 @@ MongoClient.connect(process.env.DB_STRING)
     })
 
     // get songs from the database to put respond to the document
+    // app.get('/savedSongs', (req, res) => {
+    //   const today = new Date().toISOString().split('T')[0]
+
+    //   db.collection('songs').find({ date: today }).toArray()
+    //     .then(data => {
+    //       res.json(data)
+    //     })
+    //     .catch(err => console.log(err))
+    // })
     app.get('/savedSongs', (req, res) => {
-      const today = new Date().toLocaleDateString() //Gets song by current day. Refreshing Daily
+      const today = new Date().toLocaleDateString('en-US')
 
       db.collection('songs').find({ date: today }).toArray()
-      .then(data => {
-        res.json(data)
-      })
-      .catch(err => console.log(err))
+        .then(data => {
+          res.json(data)
+        })
+        .catch(err => console.log(err))
     })
+
 
     //Get Daily Song
     app.get('/dailySong', async (req, res) => {
@@ -86,8 +96,10 @@ MongoClient.connect(process.env.DB_STRING)
       }
     })
 
-    app.listen(process.env.PORT || PORT, () => {
-      console.log(`Server running on port ${PORT}`)
+    const serverPort = process.env.PORT || PORT
+
+    app.listen(serverPort, () => {
+      console.log(`Server running on port ${serverPort}`)
     })
   })
   .catch(console.error)

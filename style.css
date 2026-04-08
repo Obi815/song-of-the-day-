@@ -269,7 +269,7 @@ body {
 #addedSongs::-webkit-scrollbar {
     display: none;
 }
-.empty-message {
+.no-songs {
     text-align: center;
     font-size: 4rem;
     color: lightgray;

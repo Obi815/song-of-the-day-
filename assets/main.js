@@ -89,15 +89,15 @@ async function getSongs() {
     const songs = await res.json()
 
     const addedSongs = document.getElementById('addedSongs')
-    addedSongs.innerHTML = ''
+        addedSongs.innerHTML = ''
 
     // ✅ if no songs exist
     if (songs.length === 0) {
-        addedSongs.innerHTML = `
-            <p class="empty-message">Be The First!</p>
-        `
-        return
-    }
+    addedSongs.innerHTML = `
+        <p class="no-songs">Be The First One to Add A Song! 🎶</p>
+    `
+    return
+}
 
     // otherwise render songs
     songs.forEach(song => {
